@@ -1,45 +1,120 @@
-import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
-
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Drawer } from 'expo-router/drawer';
+import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+type CustomHeaderProps = {
+  title: string;
+  navigation: DrawerNavigationProp<Record<string, object | undefined>>;
+};
 
+const CustomHeader = ({ title, navigation }: CustomHeaderProps) => (
+  <SafeAreaView style={styles.header}>
+    <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.openDrawer()}>
+      <MaterialIcons name="menu" size={24} color="#E38D3D" />
+    </TouchableOpacity>
+    <Image
+        style={{
+          height: 200,
+          width: 200,
+          objectFit:"contain"
+        }}
+        source={require("../../assets/images/icon.jpeg")}
+      />
+    <TouchableOpacity style={styles.iconContainer}>
+      <MaterialIcons name="person" size={24} color="grey" />
+    </TouchableOpacity>
+  </SafeAreaView>
+);
+
+const TabLayout = () => {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Drawer
+        screenOptions={{
+          header: ({ options, navigation }) => (
+            <CustomHeader title={options.title || 'Default Title'} navigation={navigation} />
+          ),
+          drawerStyle:{
+            backgroundColor:"#E38D3D",
+            width: 300,
+          }
         }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
+      >
+        <Drawer.Screen
+          name="index"
+          options={{
+            drawerLabel: 'Mon compte',
+            title: 'Home',
+            drawerActiveTintColor:"green"
+          }}
+        />
+        <Drawer.Screen
+          name="vehicule"
+          options={{
+            drawerLabel: 'Les véhicules',
+            title: 'vehicule',
+            drawerActiveTintColor:"green"
+          }}
+        />
+        <Drawer.Screen
+          name="chauffeur"
+          options={{
+            drawerLabel: 'Les chauffeurs',
+            title: 'chauffeur',
+            drawerActiveTintColor:"green"
+          }}
+        />
+        <Drawer.Screen
+          name="reservationHistory"
+          options={{
+            drawerLabel: 'Historique des réservations',
+            title: 'reservationHistory',
+            drawerActiveTintColor:"green"
+          }}
+        />
+        <Drawer.Screen
+          name="info"
+          options={{
+            drawerLabel: 'Infos',
+            title: 'info',
+            drawerActiveTintColor:"green"
+          }}
+        />
+        <Drawer.Screen
+          name="aide"
+          options={{
+            drawerLabel: 'Aide?',
+            title: 'aide',
+            drawerActiveTintColor:"green"
+          }}
+        />
+      </Drawer>
+    </GestureHandlerRootView>
   );
-}
+};
+
+export default TabLayout;
+
+const styles = StyleSheet.create({
+  header: {
+    height: 110,
+    backgroundColor: '#FFF',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderBottomWidth:1,
+    borderBottomColor:"#E38D3D"
+  },
+  iconContainer: {
+    padding: 8,
+  },
+  headerTitle: {
+    color: '#FFF',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+});

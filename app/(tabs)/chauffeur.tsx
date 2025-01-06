@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function Compte() {
+export default function chauffeur() {
   return (
     <View>
-      <Text>index</Text>
+      <Text>chauffeur</Text>
     </View>
   )
 }

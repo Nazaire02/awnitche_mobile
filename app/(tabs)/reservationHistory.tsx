@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function Compte() {
+export default function reservationHistory() {
   return (
     <View>
-      <Text>index</Text>
+      <Text>reservationHistory</Text>
     </View>
   )
 }

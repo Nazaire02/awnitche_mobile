@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function Compte() {
+export default function aide() {
   return (
     <View>
-      <Text>index</Text>
+      <Text>aide</Text>
     </View>
   )
 }
