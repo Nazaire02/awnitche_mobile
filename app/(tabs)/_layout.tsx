@@ -22,7 +22,7 @@ const CustomHeader = ({ title, navigation }: CustomHeaderProps) => (
           width: 200,
           objectFit:"contain"
         }}
-        source={require("../../assets/images/icon.jpeg")}
+        source={require("../../assets/images/icon.png")}
       />
     <TouchableOpacity style={styles.iconContainer}>
       <MaterialIcons name="person" size={24} color="grey" />
