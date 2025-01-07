@@ -1,6 +1,7 @@
 import { Image, Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { Colors } from '@/constants/Colors'
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function vehicule() {
     const vehicles = [
@@ -89,6 +90,9 @@ export default function vehicule() {
                         />
                     </View>
                     <View style={styles.cardDetails}>
+                        <TouchableOpacity style={styles.icon}>
+                            <MaterialIcons name="edit" size={24} color="#E38D3D" />
+                        </TouchableOpacity>
                         <Text style={{ fontWeight: "bold" }}>{vehicle.name}</Text>
                         <View>
                             <Text>Chauffeur: {vehicle.chauffeur}</Text>
@@ -133,8 +137,8 @@ const styles = StyleSheet.create({
         backgroundColor: "green",
         paddingVertical: 8,
         borderRadius: 4,
-        paddingHorizontal:"20%",
-        marginTop:20
+        paddingHorizontal: "20%",
+        marginTop: 20
     },
     cardContainer: {
         borderBottomWidth: 1,
@@ -145,10 +149,15 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     cardDetails: {
+        flex: 1,
         alignItems: "center",
-        width: "55%"
     },
     cardImage: {
         width: "40%"
+    },
+    icon: {
+        position: "absolute",
+        bottom:"90%",
+        right: 0,
     }
 })
