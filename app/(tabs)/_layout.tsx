@@ -41,7 +41,7 @@ const TabLayout = () => {
           drawerStyle:{
             backgroundColor:"#E38D3D",
             width: 300,
-          }
+          },
         }}
       >
         <Drawer.Screen
@@ -53,7 +53,7 @@ const TabLayout = () => {
           }}
         />
         <Drawer.Screen
-          name="vehicule"
+          name="vehicules"
           options={{
             drawerLabel: 'Les véhicules',
             title: 'vehicule',

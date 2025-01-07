@@ -2,6 +2,7 @@ import { Image, Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View 
 import React from 'react'
 import { Colors } from '@/constants/Colors'
 import { MaterialIcons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 
 export default function vehicule() {
     const vehicles = [
@@ -12,7 +13,7 @@ export default function vehicule() {
             matricule: '12ZJDJDDJDD',
             tonnage: '1UENDN',
             taille: '100',
-            image: require('../../assets/images/fourgon.jpeg')
+            image: require('../../../assets/images/fourgon.jpeg')
         },
         {
             id: 2,
@@ -21,7 +22,7 @@ export default function vehicule() {
             matricule: '34KLJFD234',
             tonnage: '2VNDG7',
             taille: '120',
-            image: require('../../assets/images/fourgon.jpeg')
+            image: require('../../../assets/images/fourgon.jpeg')
         },
         {
             id: 3,
@@ -30,7 +31,7 @@ export default function vehicule() {
             matricule: '34KLJFD234',
             tonnage: '2VNDG7',
             taille: '120',
-            image: require('../../assets/images/fourgon.jpeg')
+            image: require('../../../assets/images/fourgon.jpeg')
         },
         {
             id: 4,
@@ -39,7 +40,7 @@ export default function vehicule() {
             matricule: '34KLJFD234',
             tonnage: '2VNDG7',
             taille: '120',
-            image: require('../../assets/images/fourgon.jpeg')
+            image: require('../../../assets/images/fourgon.jpeg')
         },
         {
             id: 4,
@@ -48,7 +49,7 @@ export default function vehicule() {
             matricule: '34KLJFD234',
             tonnage: '2VNDG7',
             taille: '120',
-            image: require('../../assets/images/fourgon.jpeg')
+            image: require('../../../assets/images/fourgon.jpeg')
         },
         {
             id: 4,
@@ -57,7 +58,7 @@ export default function vehicule() {
             matricule: '34KLJFD234',
             tonnage: '2VNDG7',
             taille: '120',
-            image: require('../../assets/images/fourgon.jpeg')
+            image: require('../../../assets/images/fourgon.jpeg')
         },
         {
             id: 4,
@@ -66,7 +67,7 @@ export default function vehicule() {
             matricule: '34KLJFD234',
             tonnage: '2VNDG7',
             taille: '120',
-            image: require('../../assets/images/fourgon.jpeg')
+            image: require('../../../assets/images/fourgon.jpeg')
         },
     ];
     return (
@@ -74,7 +75,7 @@ export default function vehicule() {
             <View style={styles.header}>
                 <Text style={styles.headerTitle}>Les véhicules</Text>
                 <Pressable style={styles.buttonAdd}>
-                    <Text style={{ color: "#FFF" }}>Ajouter un véhicule</Text>
+                    <Text style={{ color: "#FFF" }} onPress={()=>(router.navigate("/(tabs)/vehicules/add"))}>Ajouter un véhicule</Text>
                 </Pressable>
             </View>
             {vehicles.map((vehicle, index) => (
