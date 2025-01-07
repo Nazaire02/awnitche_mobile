@@ -61,7 +61,7 @@ const TabLayout = () => {
           }}
         />
         <Drawer.Screen
-          name="chauffeur"
+          name="chauffeurs"
           options={{
             drawerLabel: 'Les chauffeurs',
             title: 'chauffeur',
