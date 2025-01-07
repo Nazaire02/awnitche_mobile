@@ -4,7 +4,6 @@ import { Drawer } from 'expo-router/drawer';
 import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
-import { Colors } from '@/constants/Colors';
 
 type CustomHeaderProps = {
   title: string;

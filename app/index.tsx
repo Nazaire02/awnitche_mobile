@@ -8,6 +8,8 @@ import {
     SafeAreaView,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Colors } from '@/constants/Colors';
+import { router } from 'expo-router';
 
 const HomeScreen = () => {
     return (
@@ -36,10 +38,10 @@ const HomeScreen = () => {
                 end={{ x: 0.5, y: 1 }}
                 style={styles.buttonContainer}
             >
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={() => router.navigate("/login")}>
                     <Text style={styles.buttonText}>Propriétaire de véhicules</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} >
                     <Text style={styles.buttonText}>Chauffeur de véhicule</Text>
                 </TouchableOpacity>
             </LinearGradient>
@@ -59,6 +61,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 4,
         backgroundColor: '#fff',
+        borderBlockColor:Colors.light.mainColor,
+        borderBottomWidth:1
     },
     contactText: {
         fontSize: 14,
