@@ -10,20 +10,12 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { Colors } from '@/constants/Colors';
+import Header from '@/components/Header';
 
 const HomeScreen = () => {
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Image
-                    source={require("../../assets/images/icon.png")}
-                    style={styles.logo}
-                    resizeMode="contain"
-                />
-                <TouchableOpacity>
-                    <Text style={styles.contactText}>NOUS CONTACTER</Text>
-                </TouchableOpacity>
-            </View>
+            <Header />
             <Image
                 source={require("../../assets/images/fourgon.jpeg")}
                 style={styles.image}
@@ -53,7 +45,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFF',
-        paddingTop:50
+        paddingTop: 50
     },
     header: {
         flexDirection: 'row',
@@ -61,8 +53,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 4,
         backgroundColor: '#fff',
-        borderBlockColor:Colors.light.mainColor,
-        borderBottomWidth:1
+        borderBlockColor: Colors.light.mainColor,
+        borderBottomWidth: 1
     },
     contactText: {
         fontSize: 14,

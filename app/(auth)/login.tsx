@@ -17,6 +17,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
 import { router } from "expo-router";
 import { Colors } from "@/constants/Colors";
+import Header from "@/components/Header";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -61,16 +62,7 @@ const LoginScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFF" }}>
-      <View style={styles.header}>
-        <Image
-          source={require("../../assets/images/icon.png")}
-          style={styles.logo}
-          resizeMode="contain"
-        />
-        <TouchableOpacity>
-          <Text style={styles.contactText}>NOUS CONTACTER</Text>
-        </TouchableOpacity>
-      </View>
+      <Header/>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}
@@ -109,6 +101,7 @@ const LoginScreen = () => {
               <TouchableOpacity style={styles.button} onPress={handleLogin}>
                 <Text style={styles.buttonText}>Se connecter</Text>
               </TouchableOpacity>
+              <Text style={{marginTop:10, color:"#0089C7"}} onPress={()=>router.navigate("/(auth)/register")}>S'inscrire ?</Text>
             </View>
           </View>
         </TouchableWithoutFeedback>
@@ -180,22 +173,7 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 18,
     fontWeight: "bold",
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 4,
-    backgroundColor: '#fff',
-    borderBlockColor: Colors.light.mainColor,
-    borderBottomWidth: 1
-  },
-  contactText: {
-    fontSize: 14,
-  },
-  logo: {
-    width: 200,
-  },
+  }
 });
 
 export default LoginScreen;
