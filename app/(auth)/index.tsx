@@ -8,15 +8,15 @@ import {
     SafeAreaView,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Colors } from '@/constants/Colors';
 import { router } from 'expo-router';
+import { Colors } from '@/constants/Colors';
 
 const HomeScreen = () => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <Image
-                    source={require("../assets/images/icon.png")}
+                    source={require("../../assets/images/icon.png")}
                     style={styles.logo}
                     resizeMode="contain"
                 />
@@ -25,7 +25,7 @@ const HomeScreen = () => {
                 </TouchableOpacity>
             </View>
             <Image
-                source={require("../assets/images/fourgon.jpeg")}
+                source={require("../../assets/images/fourgon.jpeg")}
                 style={styles.image}
                 resizeMode="cover"
             />
