@@ -32,6 +32,29 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": {
+            "ios": "Allow $(PRODUCT_NAME) to access your location even when the app is closed or not in use",
+            "android": {
+              "title": "Allow $(PRODUCT_NAME) to access your location",
+              "message": "We use this to show you location-based features.",
+              "buttonPositive": "Allow",
+              "buttonNegative": "Deny"
+            }
+          },
+          "locationWhenInUsePermission": {
+            "ios": "Allow $(PRODUCT_NAME) to access your location while the app is in use",
+            "android": {
+              "title": "Allow $(PRODUCT_NAME) to access your location",
+              "message": "We need this to provide personalized experiences.",
+              "buttonPositive": "Allow",
+              "buttonNegative": "Deny"
+            }
+          }
+        }
       ]
     ],
     "experiments": {
