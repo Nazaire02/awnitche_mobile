@@ -14,57 +14,57 @@ export default function Compte() {
         <View style={styles.rowTypeVehicule}>
           <Image
             style={{
-              width:"100%",
-              height:"100%",
-              borderRadius:10
+              width: "100%",
+              height: "100%",
+              borderRadius: 10
             }}
             source={require("../../assets/images/courseTaxi.png")}
           />
         </View>
         <View style={styles.rowTypeVehicule}>
-        <Image
+          <Image
             style={{
-              width:"100%",
-              height:"100%",
-              borderRadius:10
+              width: "100%",
+              height: "100%",
+              borderRadius: 10
             }}
             source={require("../../assets/images/livraison.png")}
           />
         </View>
       </View>
       <View style={styles.typeVehicule}>
-      <Image
-            style={{
-              width:"100%",
-              height:"100%",
-              borderRadius:10
-            }}
-            source={require("../../assets/images/demenagement.png")}
-          />
+        <Image
+          style={{
+            width: "100%",
+            height: "100%",
+            borderRadius: 10
+          }}
+          source={require("../../assets/images/demenagement.png")}
+        />
       </View>
       <View>
         <Text style={{ textAlign: "center", marginTop: 14 }}>Besoin plus spécifique? trouver un véhicule adapté!</Text>
       </View>
       <View style={styles.rowTypeVehiculeContainer}>
         <View style={styles.rowTypeVehicule2}>
-        <Text style={{marginLeft:20}}>Fourgon</Text>
-        <Image
-            style={{
-              width:"100%",
-              borderRadius:10,
-              flex:1
-            }}
-            source={require("../../assets/images/fourgon.png")}
-          />
+            <Text style={{ marginLeft: 20 }}>Fourgon</Text>
+            <Image
+              style={{
+                flex: 1,
+                width: "100%",
+                borderRadius: 10,
+              }}
+              source={require("../../assets/images/fourgon.png")}
+            />
         </View>
         <View style={styles.rowTypeVehicule2}>
-        <Text style={{marginLeft:20}}>Fourgon</Text>
-        <Image
+          <Text style={{ marginLeft: 12 }}>Baché</Text>
+          <Image
             style={{
-              width:"100%",
-              borderRadius:10,
-              flex:1,
-              objectFit:"scale-down"
+              width: "100%",
+              height:"80%",
+              objectFit:"fill",
+              borderRadius: 10,
             }}
             source={require("../../assets/images/bache.png")}
           />
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     height: 70,
     flex: 1,
     margin: 7,
-    alignItems:"center"
+    alignItems: "center"
   },
   rowTypeVehicule2: {
     backgroundColor: "#FFF",
@@ -113,9 +113,9 @@ const styles = StyleSheet.create({
     height: 74,
     flex: 1,
     margin: 7,
-    display:"flex",
-    flexDirection:"column",
-    paddingBottom:3
+    display: "flex",
+    flexDirection: "column",
+    paddingBottom: 3
   },
   rowTypeVehiculeContainer: {
     display: "flex",
