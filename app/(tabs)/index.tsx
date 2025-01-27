@@ -47,7 +47,7 @@ export default function Compte() {
       </View>
       <View style={styles.rowTypeVehiculeContainer}>
         <View style={styles.rowTypeVehicule2}>
-            <Text style={{ marginLeft: 20 }}>Fourgon</Text>
+        <Text style={{ marginLeft: 20 }}>Fourgon</Text>
             <Image
               style={{
                 flex: 1,
@@ -71,12 +71,56 @@ export default function Compte() {
         </View>
       </View>
       <View style={styles.rowTypeVehiculeContainer}>
-        <View style={styles.rowTypeVehicule2}></View>
-        <View style={styles.rowTypeVehicule2}></View>
+      <View style={styles.rowTypeVehicule2}>
+            <Text style={{ marginLeft: 20 }}>Plateau</Text>
+            <Image
+              style={{
+                flex: 1,
+                width: "100%",
+                objectFit:'fill',
+                borderRadius: 10,
+              }}
+              source={require("../../assets/images/plateau.png")}
+            />
+        </View>
+        <View style={styles.rowTypeVehicule2}>
+            <Text style={{ marginLeft: 20 }}>Citerne</Text>
+            <Image
+              style={{
+                flex: 1,
+                width: "100%",
+                objectFit:'fill',
+                borderRadius: 10,
+              }}
+              source={require("../../assets/images/citerne.png")}
+            />
+        </View>
       </View>
       <View style={styles.rowTypeVehiculeContainer}>
-        <View style={styles.rowTypeVehicule2}></View>
-        <View style={styles.rowTypeVehicule2}></View>
+      <View style={styles.rowTypeVehicule2}>
+            <Text style={{ marginLeft: 20 }}>Carrosserie</Text>
+            <Image
+              style={{
+                flex: 1,
+                width: "100%",
+                objectFit:'fill',
+                borderRadius: 10,
+              }}
+              source={require("../../assets/images/carrosserie.png")}
+            />
+        </View>
+        <View style={styles.rowTypeVehicule2}>
+            <Text style={{ marginLeft: 20 }}>Benne</Text>
+            <Image
+              style={{
+                flex: 1,
+                width: "100%",
+                objectFit:'fill',
+                borderRadius: 10,
+              }}
+              source={require("../../assets/images/benne.png")}
+            />
+        </View>
       </View>
     </View>
   );
