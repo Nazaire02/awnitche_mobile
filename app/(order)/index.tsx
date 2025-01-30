@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import {
     View,
     Text,
@@ -6,57 +6,100 @@ import {
     TouchableOpacity,
     StyleSheet,
     SafeAreaView,
+    ScrollView,
+    FlatList,
 } from 'react-native';
-import BottomSheet, { BottomSheetModal, BottomSheetModalProvider, BottomSheetView } from '@gorhom/bottom-sheet';
-import Header from '@/components/Header';
+import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
+import { Card } from "react-native-paper";
+import { MaterialIcons } from '@expo/vector-icons';
 
 const index = () => {
-    const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-
-    const handlePresentModalPress = useCallback(() => {
-        bottomSheetModalRef.current?.present();
-    }, []);
-
+    const [snapPoints, setSnapPoints] = useState(['34%', '34%']);
+    const bottomSheetRef = useRef<BottomSheet>(null);
+    const vehicleTypes = [
+        { id: "1", type: "Normal Car", icon: "directions-car" },
+        { id: "2", type: "Fourgon", icon: "local-shipping" },
+        { id: "3", type: "Baché", icon: "truck" },
+        { id: "4", type: "Plateau Citerne", icon: "local-gas-station" },
+        { id: "5", type: "Carosserie", icon: "directions-bus" },
+        { id: "6", type: "Benne", icon: "truck" },
+    ];
     const handleSheetChanges = useCallback((index: number) => {
         console.log('handleSheetChanges', index);
     }, []);
 
-    useEffect(() => {
-        handlePresentModalPress();
-    }, []);
+    const handleInputFocus = () => {
+        setSnapPoints(['90%', '90%']);
+    };
+
+    const handleInputBlur = () => {
+        setSnapPoints(['34%', '34%']);
+    };
 
     return (
         <SafeAreaView style={styles.container}>
-            <Header />
-            <BottomSheetModalProvider>
-                <View style={{ flex: 1, backgroundColor: "#FFF6F6" }}>
-                    <BottomSheetModal
-                        ref={bottomSheetModalRef}
-                        onChange={handleSheetChanges}
-                        style={{
-                            borderTopLeftRadius: 40,
-                            borderTopRightRadius: 40,
-                        }}
-                    >
-                        <BottomSheetView style={styles.contentContainer}>
-                            <Text style={styles.label}>Position</Text>
-                            <TextInput style={styles.input} placeholder="Destination" />
-                            <TextInput style={styles.input} placeholder="Rue 12 avenue 13 (depart)" />
-                            <TouchableOpacity style={styles.button}>
-                                <Text style={styles.buttonText}>Entrer</Text>
-                            </TouchableOpacity>
-                        </BottomSheetView>
-                    </BottomSheetModal>
+            <View style={styles.carsContainer}>
+                <FlatList
+                    data={vehicleTypes}
+                    numColumns={2} // Display in 2 columns
+                    keyExtractor={(item) => item.id}
+                    renderItem={({ item }) => (
+                        <TouchableOpacity style={styles.cardContainer}>
+                            <Card style={styles.card}>
+                                <MaterialIcons name={item.icon} size={50} color="#333" />
+                            </Card>
+                        </TouchableOpacity>
+                    )}
+                />
+                <View style={{marginTop:30, paddingHorizontal:10}}>
+                <TouchableOpacity style={styles.button} onPress={()=>bottomSheetRef.current?.expand()}>
+                    <Text style={styles.buttonText}>Choisir positions</Text>
+                </TouchableOpacity>
                 </View>
-            </BottomSheetModalProvider>
-        </SafeAreaView>
+            </View>
+            <BottomSheet
+                ref={bottomSheetRef}
+                onChange={handleSheetChanges}
+                style={{
+                    borderTopLeftRadius: 40,
+                    borderTopRightRadius: 40,
+                }}
+                snapPoints={snapPoints}
+                enableDynamicSizing={false}
+                backdropComponent={(backdropProps) => (
+                    <BottomSheetBackdrop
+                        {...backdropProps}
+                        disappearsOnIndex={-1}
+                        opacity={0.3}
+                    />
+                )}
+            >
+                <BottomSheetView style={styles.contentContainer}>
+                    <Text style={styles.label}>Position</Text>
+                    <TextInput
+                        style={styles.input} placeholder="Destination"
+                        onFocus={handleInputFocus}
+                        onBlur={handleInputBlur}
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Rue 12 avenue 13 (depart)"
+                        onFocus={handleInputFocus}
+                        onBlur={handleInputBlur}
+                    />
+                    <TouchableOpacity style={styles.button}>
+                        <Text style={styles.buttonText}>Entrer</Text>
+                    </TouchableOpacity>
+                </BottomSheetView>
+            </BottomSheet>
+        </SafeAreaView >
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFF',
+        backgroundColor: '#FFF6F6',
     },
     contentContainer: {
         padding: 16,
@@ -86,6 +129,25 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#FFF',
         fontWeight: 'bold',
+    },
+    carsContainer: {
+        justifyContent: "center",
+        padding: 10,
+        marginTop:40
+    },
+    cardContainer: {
+        flex: 1,
+        alignItems: "center",
+        padding: 10,
+    },
+    card: {
+        width: "100%",
+        height: 120,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "white",
+        elevation: 4,
+        borderRadius: 10,
     },
 });
 
