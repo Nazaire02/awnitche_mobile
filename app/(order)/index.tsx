@@ -51,10 +51,10 @@ const index = () => {
                         </TouchableOpacity>
                     )}
                 />
-                <View style={{marginTop:30, paddingHorizontal:10}}>
-                <TouchableOpacity style={styles.button} onPress={()=>bottomSheetRef.current?.expand()}>
-                    <Text style={styles.buttonText}>Choisir positions</Text>
-                </TouchableOpacity>
+                <View style={{ marginTop: 30, paddingHorizontal: 10 }}>
+                    <TouchableOpacity style={styles.button} onPress={() => bottomSheetRef.current?.expand()}>
+                        <Text style={styles.buttonText}>Choisir positions</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
             <BottomSheet
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     carsContainer: {
         justifyContent: "center",
         padding: 10,
-        marginTop:40
+        marginTop: 40
     },
     cardContainer: {
         flex: 1,
