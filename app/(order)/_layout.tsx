@@ -6,6 +6,7 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{flex:1}}>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="tricycle" options={{ headerShown: false }} />
       </Stack>
       </GestureHandlerRootView>
   );

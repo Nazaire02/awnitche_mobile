@@ -11,8 +11,8 @@ const vehicles = [
 ];
 
 const specificVehicles = [
-  { label: 'Tricycle', image: require('../../assets/images/fourgon.png') },
-  { label: 'Fourgon', image: require('../../assets/images/bache.png') },
+  { label: 'Tricycle', image: require('../../assets/images/fourgon.png'), url:"/(order)/tricycle" },
+  { label: 'Fourgon', image: require('../../assets/images/bache.png'), url:"/(order)" },
 ];
 
 import { Formik } from 'formik';
@@ -43,7 +43,7 @@ export default function Compte() {
       <TouchableOpacity
         key={index}
         style={type === 'row' ? styles.rowTypeVehicule : styles.rowTypeVehicule2}
-        onPress={() => router.navigate('/(order)')}
+        onPress={() => router.navigate(item.url)}
       >
         {item.label && <Text style={styles.vehicleLabel}>{item.label}</Text>}
         <Image style={styles.vehicleImage} source={item.image} />
