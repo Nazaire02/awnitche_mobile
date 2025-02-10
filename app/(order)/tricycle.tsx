@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import {StyleSheet, Text, TextInput, TouchableOpacity, View, Keyboard } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, Keyboard } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
@@ -9,14 +9,14 @@ import * as Yup from 'yup';
 const validationSchema = Yup.object().shape({
   pickupLocation: Yup.string().required('Lieu de prise en charge requis'),
   dropoffLocation: Yup.string().required('Lieu de déchargement requis'),
-  typeCharge:Yup.string().required('Spécifié le type de charge'),
-  nbreVoyage:Yup.string().required('Spécifié le nombre de voyage'),
+  typeCharge: Yup.string().required('Spécifié le type de charge'),
+  nbreVoyage: Yup.string().required('Spécifié le nombre de voyage'),
 });
 
 export default function Tricycle() {
   const [currentlocation, setCurrentLocation] = useState<Location.LocationObject | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [snapPoints, setSnapPoints] = useState(['34%', '34%']);
+  const [snapPoints, setSnapPoints] = useState(['50%', '50%']);
   const bottomSheetRef = useRef<BottomSheet>(null);
 
   const handleSheetChanges = useCallback((index: number) => {
@@ -27,7 +27,7 @@ export default function Tricycle() {
     setSnapPoints(['90%', '90%']);
   };
   const handleInputBlur = () => {
-    setSnapPoints(['34%', '34%']);
+    setSnapPoints(['50%', '50%']);
   };
 
   useEffect(() => {
@@ -66,21 +66,23 @@ export default function Tricycle() {
         enableDynamicSizing={false}
       >
         <Formik
-          initialValues={{ 
-            pickupLocation: 'Agban Village', 
-            dropoffLocation: 'Gare de bassam' 
-        }}
+          initialValues={{
+            pickupLocation: 'Agban Village',
+            dropoffLocation: 'Gare de bassam',
+            typeCharge: '',
+            nbreVoyage: '',
+          }}
           validationSchema={validationSchema}
-          onSubmit={(values) => 
+          onSubmit={(values) =>
             bottomSheetRef.current?.close()
           }
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
             <BottomSheetView style={styles.contentContainer}>
               <Text style={styles.label}>Tricyle: 7 800 FCFA</Text>
-                <View style={{borderBottomColor:"gray", borderBottomWidth:2, width:"100%", marginBottom:7, paddingVertical:3}}>
-                    <Text>Distance estimée: 4.1km | 10min</Text>
-                </View>
+              <View style={{ borderBottomColor: "gray", borderBottomWidth: 2, width: "100%", marginBottom: 7, paddingVertical: 3 }}>
+                <Text>Distance estimée: 4.1km | 10min</Text>
+              </View>
               <View style={styles.inputContainer}>
                 <TextInput
                   style={styles.input}
@@ -89,11 +91,31 @@ export default function Tricycle() {
                 />
               </View>
               <View style={styles.inputContainer}>
-              <TextInput
-                style={styles.input}
-                value={values.dropoffLocation}
-                readOnly={true}
-              />
+                <TextInput
+                  style={styles.input}
+                  value={values.dropoffLocation}
+                  readOnly={true}
+                />
+              </View>
+              <View style={styles.inputContainer}>
+                <TextInput
+                  style={styles.input}
+                  value={values.typeCharge}
+                  onChangeText={handleChange('typeCharge')}
+                  placeholder='Type de charge'
+                  onFocus={handleInputFocus}
+                  onBlur={handleInputBlur}
+                />
+              </View>
+              <View style={styles.inputContainer}>
+                <TextInput
+                  style={styles.input}
+                  value={values.nbreVoyage}
+                  onChangeText={handleChange('nbreVoyage')}
+                  keyboardType='numeric'
+                  onFocus={handleInputFocus}
+                  onBlur={handleInputBlur}
+                />
               </View>
               <TouchableOpacity style={styles.button} onPress={() => handleSubmit()}>
                 <Text style={styles.buttonText}>Entrer</Text>
@@ -161,9 +183,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 8,
   },
-  inputContainer:{
+  inputContainer: {
     width: '100%',
-    marginBottom: 16,
+    marginBottom: 4,
   },
   input: {
     width: '100%',
@@ -172,7 +194,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingVertical: 10,
     paddingHorizontal: 16,
-    marginBottom:3
+    marginBottom: 3
   },
   button: {
     width: '100%',
@@ -180,7 +202,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingVertical: 12,
     alignItems: 'center',
-    marginBottom:40
+    marginBottom: 40
   },
   buttonText: {
     color: '#FFF',
