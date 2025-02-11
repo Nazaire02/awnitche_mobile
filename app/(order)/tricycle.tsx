@@ -73,9 +73,10 @@ export default function Tricycle() {
             nbreVoyage: '',
           }}
           validationSchema={validationSchema}
-          onSubmit={(values) =>
+          onSubmit={(values) =>{
+            console.log(values)
             bottomSheetRef.current?.close()
-          }
+          }}
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
             <BottomSheetView style={styles.contentContainer}>
