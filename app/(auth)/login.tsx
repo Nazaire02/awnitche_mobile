@@ -13,9 +13,9 @@ import {
   Image,
   SafeAreaView,
 } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { Colors } from "@/constants/Colors";
 import Header from "@/components/Header";
 
@@ -24,6 +24,7 @@ const LoginScreen = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isError, setIsError] = useState(false);
+  const { userType } = useLocalSearchParams();
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -62,7 +63,7 @@ const LoginScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFF" }}>
-      <Header/>
+      <Header />
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}
@@ -101,11 +102,14 @@ const LoginScreen = () => {
               <TouchableOpacity style={styles.button} onPress={handleLogin}>
                 <Text style={styles.buttonText}>Se connecter</Text>
               </TouchableOpacity>
-              <Text style={{marginTop:10, color:"#0089C7"}} onPress={()=>router.navigate("/(auth)/register")}>S'inscrire ?</Text>
+              <Text style={{ marginTop: 10, color: "#0089C7" }} onPress={() => router.navigate("/(auth)/register")}>S'inscrire ?</Text>
             </View>
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
+      <TouchableOpacity onPress={() => router.replace("/")} style={{paddingHorizontal: 20}}>
+        <Ionicons name="chevron-back-circle-outline" size={40} color="orange" />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };

@@ -30,10 +30,10 @@ const HomeScreen = () => {
                 end={{ x: 0.5, y: 1 }}
                 style={styles.buttonContainer}
             >
-                <TouchableOpacity style={styles.button} onPress={() => router.navigate("/login")}>
+                <TouchableOpacity style={styles.button} onPress={() => router.navigate({pathname: "/login", params:{userType: 'owner'}})}>
                     <Text style={styles.buttonText}>Propriétaire de véhicules</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button} >
+                <TouchableOpacity style={styles.button} onPress={() => router.navigate({pathname: "/login", params:{userType: 'driver'}})}>
                     <Text style={styles.buttonText}>Chauffeur de véhicule</Text>
                 </TouchableOpacity>
             </LinearGradient>

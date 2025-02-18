@@ -4,8 +4,7 @@ import MapView, { Marker } from 'react-native-maps';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { router } from 'expo-router';
+import { MaterialIcons } from "@expo/vector-icons";
 
 
 const validationSchema = Yup.object().shape({
@@ -15,7 +14,7 @@ const validationSchema = Yup.object().shape({
   nbreVoyage: Yup.string().required('Spécifier le nombre de voyage'),
 });
 
-export default function Tricycle() {
+export default function Fourgon() {
   const [snapPoints, setSnapPoints] = useState(['50%', '50%']);
   const [nbreVoyage, setNbreVoyage] = useState(1);
   const [typeCharge, setTypeCharge] = useState('');
@@ -53,9 +52,7 @@ export default function Tricycle() {
       <MapView showsUserLocation={true} style={StyleSheet.absoluteFillObject}>
         <Marker coordinate={{ latitude: 37.78825, longitude: -122.4324 }} title="Marker Title" description="Marker Description" />
       </MapView>
-      {!showSecondBottomSheet && <TouchableOpacity style={styles.buttonBack} onPress={() => router.back()}>
-        <Ionicons name="return-down-back-sharp" size={30} color="black" />
-      </TouchableOpacity>}
+
       {/* Premier BottomSheet */}
       {!showSecondBottomSheet && (
         <BottomSheet ref={bottomSheetRef} onChange={handleSheetChanges} style={styles.bottomSheet} snapPoints={snapPoints} enableDynamicSizing={false}>
@@ -275,14 +272,6 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingLeft: 7,
     paddingBottom: 2
-  },
-  buttonBack: {
-    position: "absolute",
-    top: "30%",
-    backgroundColor: "#FFA500",
-    borderRadius: 40,
-    padding: 4,
-    left: 7,
   }
 });
 
