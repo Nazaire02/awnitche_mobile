@@ -75,7 +75,7 @@ export default function vehicule() {
             <View style={styles.header}>
                 <Text style={styles.headerTitle}>Les véhicules</Text>
                 <Pressable style={styles.buttonAdd}>
-                    <Text style={{ color: "#FFF" }} onPress={()=>(router.navigate("/(tabs)/vehicules/add"))}>Ajouter un véhicule</Text>
+                    <Text style={{ color: "#FFF" }} onPress={()=>(router.navigate("/(proprietaire)/vehicules/add"))}>Ajouter un véhicule</Text>
                 </Pressable>
             </View>
             {vehicles.map((vehicle, index) => (

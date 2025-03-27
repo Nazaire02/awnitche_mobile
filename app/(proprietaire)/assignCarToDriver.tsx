@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function info() {
+export default function assignCarToDriver() {
   return (
     <View>
-      <Text>info</Text>
+      <Text>aide</Text>
     </View>
   )
 }

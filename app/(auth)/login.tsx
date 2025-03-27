@@ -45,7 +45,11 @@ const LoginScreen = () => {
     }
     else {
       try {
-        router.navigate("/(tabs)");
+        if (userType === "owner") {
+          router.navigate("/(proprietaire)");
+        } else {
+          
+        }
       }
       catch (error: any) {
         console.log(error.response?.data)

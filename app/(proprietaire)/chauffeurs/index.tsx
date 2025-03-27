@@ -52,7 +52,7 @@ export default function index() {
             <View style={styles.header}>
                 <Text style={styles.headerTitle}>Les chauffeurs</Text>
                 <Pressable style={styles.buttonAdd}>
-                    <Text style={{ color: "#FFF" }} onPress={()=>(router.navigate("/(tabs)/chauffeurs/add"))}>Ajouter un chauffeur</Text>
+                    <Text style={{ color: "#FFF" }} onPress={()=>(router.push("/(proprietaire)/chauffeurs/add"))}>Ajouter un chauffeur</Text>
                 </Pressable>
             </View>
             {chauffeurs.map((chauffeur, index) => (

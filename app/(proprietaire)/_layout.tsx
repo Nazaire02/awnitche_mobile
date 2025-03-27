@@ -67,6 +67,14 @@ const TabLayout = () => {
             drawerActiveTintColor:"green"
           }}
         />
+                <Drawer.Screen
+          name="assignCarToDriver"
+          options={{
+            drawerLabel: 'Assignation Chauff-Vehicule',
+            title: 'info',
+            drawerActiveTintColor:"green"
+          }}
+        />
         <Drawer.Screen
           name="reservationHistory"
           options={{
@@ -76,19 +84,12 @@ const TabLayout = () => {
           }}
         />
         <Drawer.Screen
-          name="info"
+          name="map"
           options={{
-            drawerLabel: 'Infos',
-            title: 'info',
-            drawerActiveTintColor:"green"
-          }}
-        />
-        <Drawer.Screen
-          name="aide"
-          options={{
-            drawerLabel: 'Aide?',
+            drawerLabel: 'Map',
             title: 'aide',
-            drawerActiveTintColor:"green"
+            drawerActiveTintColor:"green",
+            drawerItemStyle: { display: 'none' }
           }}
         />
       </Drawer>
