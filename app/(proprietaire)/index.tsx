@@ -105,10 +105,10 @@ export default function index() {
         ))}
       </ScrollView>
       <View style={styles.floatingContainer}>
-        <TouchableOpacity style={styles.floatingButton} onPress={() => {router.navigate("/(proprietaire)/vehicules")}}>
+        <TouchableOpacity style={styles.floatingButton} onPress={() => {router.replace("/(proprietaire)/vehicules")}}>
           <MaterialIcons name="directions-car" size={24} color="white" />
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.floatingButton, styles.buttonSpacing]} onPress={() => {router.navigate("/(proprietaire)/chauffeurs")}}>
+        <TouchableOpacity style={[styles.floatingButton, styles.buttonSpacing]} onPress={() => {router.replace("/(proprietaire)/chauffeurs")}}>
           <MaterialIcons name="person-add" size={24} color="white" />
         </TouchableOpacity>
       </View>
