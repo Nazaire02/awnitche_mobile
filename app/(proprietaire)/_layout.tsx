@@ -1,9 +1,9 @@
 import React from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
-import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { DrawerNavigationProp } from '@react-navigation/drawer';
+import { DrawerContentScrollView, DrawerItemList, DrawerNavigationProp } from '@react-navigation/drawer';
 
 type CustomHeaderProps = {
   title: string;
@@ -16,29 +16,65 @@ const CustomHeader = ({ title, navigation }: CustomHeaderProps) => (
       <MaterialIcons name="menu" size={24} color="#E38D3D" />
     </TouchableOpacity>
     <Image
-        style={{
-          height: 200,
-          width: 200,
-          objectFit:"contain"
-        }}
-        source={require("../../assets/images/icon.png")}
-      />
+      style={{
+        height: 200,
+        width: 200,
+        objectFit: "contain"
+      }}
+      source={require("../../assets/images/icon.png")}
+    />
     <TouchableOpacity style={styles.iconContainer}>
       <MaterialIcons name="person" size={24} color="grey" />
     </TouchableOpacity>
   </SafeAreaView>
 );
 
+const CustomDrawerContent = (props: any) => {
+  const handleLogout = () => {
+    Alert.alert(
+      "Déconnexion",
+      "Êtes-vous sûr de vouloir vous déconnecter ?",
+      [
+        {
+          text: "Oui",
+          style: "cancel",
+        },
+        {
+          text: "Non",
+          onPress: () => {
+            console.log("User logged out");
+          },
+          style: "destructive",
+        },
+      ]
+    );
+  };
+
+  return (
+    <DrawerContentScrollView {...props} contentContainerStyle={{ flex: 1 }} bounces={false}>
+      <DrawerItemList {...props} />
+      <View style={styles.footer}>
+        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+          <MaterialIcons name="logout" size={24} color="white" />
+          <Text style={styles.logoutText}>Déconnexion</Text>
+        </TouchableOpacity>
+      </View>
+    </DrawerContentScrollView>
+  );
+};
+
+
 const TabLayout = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
+        drawerContent={(props) => <CustomDrawerContent {...props} />}
         screenOptions={{
           header: ({ options, navigation }) => (
             <CustomHeader title={options.title || 'Default Title'} navigation={navigation} />
           ),
-          drawerStyle:{
-            backgroundColor:"#E38D3D",
+          drawerStyle: {
+            backgroundColor: "#E38D3D",
             width: 300,
           },
         }}
@@ -48,7 +84,7 @@ const TabLayout = () => {
           options={{
             drawerLabel: 'Mon compte',
             title: 'Home',
-            drawerActiveTintColor:"green"
+            drawerActiveTintColor: "green"
           }}
         />
         <Drawer.Screen
@@ -56,7 +92,7 @@ const TabLayout = () => {
           options={{
             drawerLabel: 'Les véhicules',
             title: 'vehicule',
-            drawerActiveTintColor:"green"
+            drawerActiveTintColor: "green"
           }}
         />
         <Drawer.Screen
@@ -64,15 +100,15 @@ const TabLayout = () => {
           options={{
             drawerLabel: 'Les chauffeurs',
             title: 'chauffeur',
-            drawerActiveTintColor:"green"
+            drawerActiveTintColor: "green"
           }}
         />
-                <Drawer.Screen
+        <Drawer.Screen
           name="assignCarToDriver"
           options={{
             drawerLabel: 'Assignation Chauff-Vehicule',
             title: 'info',
-            drawerActiveTintColor:"green"
+            drawerActiveTintColor: "green"
           }}
         />
         <Drawer.Screen
@@ -80,7 +116,7 @@ const TabLayout = () => {
           options={{
             drawerLabel: 'Historique des réservations',
             title: 'reservationHistory',
-            drawerActiveTintColor:"green"
+            drawerActiveTintColor: "green"
           }}
         />
         <Drawer.Screen
@@ -88,7 +124,7 @@ const TabLayout = () => {
           options={{
             drawerLabel: 'Map',
             title: 'aide',
-            drawerActiveTintColor:"green",
+            drawerActiveTintColor: "green",
             drawerItemStyle: { display: 'none' }
           }}
         />
@@ -106,8 +142,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderBottomWidth:1,
-    borderBottomColor:"#E38D3D"
+    borderBottomWidth: 1,
+    borderBottomColor: "#E38D3D"
   },
   iconContainer: {
     padding: 8,
@@ -116,5 +152,23 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  footer: {
+    marginTop: 'auto', 
+    padding: 20,
+    borderTopWidth: 1,
+    borderColor: '#ccc',
+  },
+  logoutButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#DC3545',
+    padding: 10,
+    borderRadius: 5,
+  },
+  logoutText: {
+    color: 'white',
+    fontSize: 16,
+    marginLeft: 10,
   },
 });
