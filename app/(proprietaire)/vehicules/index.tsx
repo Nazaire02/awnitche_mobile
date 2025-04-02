@@ -13,7 +13,9 @@ export default function vehicule() {
             matricule: '12ZJDJDDJDD',
             tonnage: '1UENDN',
             taille: '100',
-            image: require('../../../assets/images/fourgon.jpeg')
+            image: require('../../../assets/images/fourgon.jpeg'),
+            categorie: "",
+            ville: "Abidjan"
         },
         {
             id: 2,
@@ -22,7 +24,9 @@ export default function vehicule() {
             matricule: '34KLJFD234',
             tonnage: '2VNDG7',
             taille: '120',
-            image: require('../../../assets/images/fourgon.jpeg')
+            image: require('../../../assets/images/fourgon.jpeg'),
+            categorie: "",
+            ville: "Abidjan"
         },
         {
             id: 3,
@@ -31,7 +35,9 @@ export default function vehicule() {
             matricule: '34KLJFD234',
             tonnage: '2VNDG7',
             taille: '120',
-            image: require('../../../assets/images/fourgon.jpeg')
+            image: require('../../../assets/images/fourgon.jpeg'),
+            categorie: "",
+            ville: "Abidjan"
         },
         {
             id: 4,
@@ -40,7 +46,9 @@ export default function vehicule() {
             matricule: '34KLJFD234',
             tonnage: '2VNDG7',
             taille: '120',
-            image: require('../../../assets/images/fourgon.jpeg')
+            image: require('../../../assets/images/fourgon.jpeg'),
+            categorie: "",
+            ville: "Abidjan"
         },
         {
             id: 4,
@@ -49,7 +57,9 @@ export default function vehicule() {
             matricule: '34KLJFD234',
             tonnage: '2VNDG7',
             taille: '120',
-            image: require('../../../assets/images/fourgon.jpeg')
+            image: require('../../../assets/images/fourgon.jpeg'),
+            categorie: "",
+            ville: "Abidjan"
         },
         {
             id: 4,
@@ -58,7 +68,9 @@ export default function vehicule() {
             matricule: '34KLJFD234',
             tonnage: '2VNDG7',
             taille: '120',
-            image: require('../../../assets/images/fourgon.jpeg')
+            image: require('../../../assets/images/fourgon.jpeg'),
+            categorie: "",
+            ville: "Abidjan"
         },
         {
             id: 4,
@@ -67,7 +79,9 @@ export default function vehicule() {
             matricule: '34KLJFD234',
             tonnage: '2VNDG7',
             taille: '120',
-            image: require('../../../assets/images/fourgon.jpeg')
+            image: require('../../../assets/images/fourgon.jpeg'),
+            categorie: "",
+            ville: "Abidjan"
         },
     ];
     return (
@@ -75,7 +89,7 @@ export default function vehicule() {
             <View style={styles.header}>
                 <Text style={styles.headerTitle}>Les véhicules</Text>
                 <Pressable style={styles.buttonAdd}>
-                    <Text style={{ color: "#FFF" }} onPress={()=>(router.replace("/(proprietaire)/vehicules/add"))}>Ajouter un véhicule</Text>
+                    <Text style={{ color: "#FFF" }} onPress={() => (router.navigate("/(proprietaire)/vehicules/add"))}>Ajouter un véhicule</Text>
                 </Pressable>
             </View>
             {vehicles.map((vehicle, index) => (
@@ -91,18 +105,22 @@ export default function vehicule() {
                         />
                     </View>
                     <View style={styles.cardDetails}>
-                        <TouchableOpacity style={styles.icon}>
-                            <MaterialIcons name="edit" size={24} color="#E38D3D" />
-                        </TouchableOpacity>
                         <Text style={{ fontWeight: "bold" }}>{vehicle.name}</Text>
                         <View>
-                            <Text>Chauffeur: {vehicle.chauffeur}</Text>
                             <Text>Matricule: {vehicle.matricule}</Text>
                             <Text>Tonnage: {vehicle.tonnage}</Text>
                             <Text>Taille: {vehicle.taille}</Text>
+                            <Text>Catégorie: {vehicle.categorie}</Text>
+                            <Text>Ville: {vehicle.ville}</Text>
+                            <Text>Chauffeur: {vehicle.chauffeur}</Text>
                         </View>
-                        <TouchableOpacity style={styles.buttonPost}>
-                            <Text style={{ color: "#FFF" }}>Poster</Text>
+                    </View>
+                    <View style={styles.actions}>
+                        <TouchableOpacity style={styles.iconEdit}>
+                            <MaterialIcons name="edit" size={24} color="black" />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.iconDelete}>
+                            <MaterialIcons name="delete" size={24} color="black" />
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -156,9 +174,17 @@ const styles = StyleSheet.create({
     cardImage: {
         width: "40%"
     },
-    icon: {
+    actions: {
         position: "absolute",
-        bottom:"90%",
-        right: 0,
+        bottom: "70%",
+        right: 4
+    },
+    iconEdit: {
+        marginBottom: 4
+    },
+    iconDelete: {
+        // position: "absolute",
+        // bottom:"78%",
+        // right: 0,
     }
 })

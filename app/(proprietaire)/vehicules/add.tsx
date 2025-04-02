@@ -4,7 +4,7 @@ import React from 'react'
 export default function add() {
   return (
     <View style={styles.container}>
-      <Text style={styles.headerTitle}>Ajouter un véhicule</Text>
+      <Text style={styles.headerTitle}>Ajout d'un véhicule</Text>
       <View style={{paddingHorizontal:12}}>
         <View>
           <Text style={styles.label}>Type de véhicule</Text>
@@ -49,14 +49,7 @@ export default function add() {
           />
         </View>
         <View>
-          <Text style={styles.label}>Images</Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder=''
-          />
-        </View>
-        <View>
-          <Text style={styles.label}>Assigner un chauffeur</Text>
+          <Text style={styles.label}>Catégorie</Text>
           <TextInput
             style={styles.textInput}
             placeholder=''
@@ -78,7 +71,9 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontWeight: "bold",
-    fontSize: 20
+    fontSize: 20,
+    textAlign:"center",
+    marginBottom:10
   },
   textInput: {
     padding: 10,
