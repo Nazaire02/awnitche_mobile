@@ -96,6 +96,7 @@ export default function vehicule() {
                 <View key={index} style={styles.cardContainer}>
                     <View style={styles.cardImage}>
                         <Image
+                            //style={styles.roundImage}
                             style={{
                                 height: 100,
                                 width: "100%",
@@ -172,7 +173,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     cardImage: {
-        width: "40%"
+        width: "40%",
     },
     actions: {
         position: "absolute",
@@ -186,5 +187,12 @@ const styles = StyleSheet.create({
         // position: "absolute",
         // bottom:"78%",
         // right: 0,
-    }
+    },
+    // roundImage: {
+    //     width: "100%",
+    //     height: 133,
+    //     borderRadius: 100,
+    //     borderWidth: 1,
+    //     objectFit: "cover"
+    // },
 })
