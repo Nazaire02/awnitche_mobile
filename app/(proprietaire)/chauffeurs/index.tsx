@@ -8,43 +8,38 @@ export default function index() {
     const chauffeurs = [
         {
             id: 1,
-            firstName:"Traoré",
-            lastName:"Hassan",
-            firstTel:"0709090909",
-            secondTel:"0109090909",
-            vehicleOccupied:"AHB01HEH"
+            firstName: "Traoré",
+            lastName: "Hassan",
+            tel: "0709090909",
+            vehicleOccupied: "AHB01HEH"
         },
         {
             id: 2,
-            firstName:"Traoré",
-            lastName:"Hassan",
-            firstTel:"0709090909",
-            secondTel:"0109090909",
-            vehicleOccupied:"AHB01HEH"
+            firstName: "Traoré",
+            lastName: "Hassan",
+            tel: "0709090909",
+            vehicleOccupied: "AHB01HEH"
         },
         {
             id: 3,
-            firstName:"Traoré",
-            lastName:"Hassan",
-            firstTel:"0709090909",
-            secondTel:"0109090909",
-            vehicleOccupied:"AHB01HEH"
+            firstName: "Traoré",
+            lastName: "Hassan",
+            tel: "0709090909",
+            vehicleOccupied: "AHB01HEH"
         },
         {
             id: 4,
-            firstName:"Traoré",
-            lastName:"Hassan",
-            firstTel:"0709090909",
-            secondTel:"0109090909",
-            vehicleOccupied:"AHB01HEH"
+            firstName: "Traoré",
+            lastName: "Hassan",
+            tel: "0709090909",
+            vehicleOccupied: "AHB01HEH"
         },
         {
             id: 4,
-            firstName:"Traoré",
-            lastName:"Hassan",
-            firstTel:"0709090909",
-            secondTel:"0109090909",
-            vehicleOccupied:"AHB01HEH"
+            firstName: "Traoré",
+            lastName: "Hassan",
+            tel: "0709090909",
+            vehicleOccupied: "AHB01HEH"
         }
     ];
     return (
@@ -52,7 +47,7 @@ export default function index() {
             <View style={styles.header}>
                 <Text style={styles.headerTitle}>Les chauffeurs</Text>
                 <Pressable style={styles.buttonAdd}>
-                    <Text style={{ color: "#FFF" }} onPress={()=>(router.replace("/(proprietaire)/chauffeurs/add"))}>Ajouter un chauffeur</Text>
+                    <Text style={{ color: "#FFF" }} onPress={() => (router.replace("/(proprietaire)/chauffeurs/add"))}>Ajouter un chauffeur</Text>
                 </Pressable>
             </View>
             {chauffeurs.map((chauffeur, index) => (
@@ -60,16 +55,20 @@ export default function index() {
                     <View style={styles.profilePicture}>
                     </View>
                     <View style={styles.cardDetails}>
-                        <TouchableOpacity style={styles.icon}>
-                            <MaterialIcons name="edit" size={24} color="#E38D3D" />
-                        </TouchableOpacity>
                         <View>
                             <Text>Nom: {chauffeur.firstName}</Text>
                             <Text>Prénom: {chauffeur.lastName}</Text>
-                            <Text>Numéro tel 1: {chauffeur.firstTel}</Text>
-                            <Text>Numéro tel 2: {chauffeur.secondTel}</Text>
-                            <Text>Vehicule occupé: {chauffeur.vehicleOccupied}</Text>
+                            <Text>Numéro tel: {chauffeur.tel}</Text>
+                            <Text>Vehicule: {chauffeur.vehicleOccupied}</Text>
                         </View>
+                    </View>
+                    <View style={styles.actions}>
+                        <TouchableOpacity style={styles.iconEdit}>
+                            <MaterialIcons name="edit" size={24} color="black" />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.iconDelete}>
+                            <MaterialIcons name="delete" size={24} color="black" />
+                        </TouchableOpacity>
                     </View>
                 </View>
             ))}
@@ -120,14 +119,19 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     profilePicture: {
-        height:90,
+        height: 90,
         width: 90,
-        backgroundColor:"grey",
-        borderRadius:80
+        backgroundColor: "grey",
+        borderRadius: 80
     },
-    icon: {
+    actions: {
         position: "absolute",
-        bottom:"80%",
-        right: 0,
+        bottom: "70%",
+        right: 4
+    },
+    iconEdit: {
+        marginBottom: 4
+    },
+    iconDelete: {
     }
 })

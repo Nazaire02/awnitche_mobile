@@ -1,11 +1,19 @@
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView } from 'react-native'
 import React from 'react'
+import { Image } from 'react-native'
 
 export default function add() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.headerTitle}>Ajouter un chauffeur</Text>
-      <View style={{paddingHorizontal:12}}>
+      <View style={styles.photoContainer}>
+        <Image
+          //source={require("./assets/avatar-placeholder.png")}
+          style={styles.photo}
+        />
+        <Text style={styles.photoText}>Photo</Text>
+      </View>
+      <View style={{ paddingHorizontal: 12 }}>
         <View>
           <Text style={styles.label}>Type de véhicule</Text>
           <TextInput
@@ -66,7 +74,7 @@ export default function add() {
           <Text>Enregistrer</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
@@ -78,24 +86,39 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontWeight: "bold",
-    fontSize: 20
+    fontSize: 20,
+    textAlign:"center"
   },
   textInput: {
     padding: 10,
-    borderWidth:1,
-    borderColor:"green",
-    borderRadius:7
+    borderWidth: 1,
+    borderColor: "green",
+    borderRadius: 7
   },
-  label:{
-    marginBottom:3,
-    marginTop:7
+  label: {
+    marginBottom: 3,
+    marginTop: 7
   },
-  buttonSave:{
-    backgroundColor:"green",
-    height:40,
-    justifyContent:"center",
-    alignItems:"center",
-    borderRadius:4,
-    marginTop:10
-  }
+  buttonSave: {
+    backgroundColor: "green",
+    height: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+    marginTop: 10
+  },
+  photoContainer: {
+    alignItems: "center",
+    marginBottom: 15,
+  },
+  photo: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: "#DDD",
+  },
+  photoText: {
+    marginTop: 5,
+    color: "#777",
+  },
 })
