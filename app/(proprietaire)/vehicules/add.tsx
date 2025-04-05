@@ -1,6 +1,7 @@
-import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import * as ImagePicker from 'expo-image-picker';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default function add() {
   const [image, setImage] = useState<string | null>(null);
@@ -18,72 +19,79 @@ export default function add() {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.headerTitle}>Ajout d'un véhicule</Text>
-      <TouchableOpacity onPress={pickImage} style={styles.imagePicker}>
-        {image ? (
-          <Image source={{ uri: image }} style={styles.profileImage} />
-        ) : (
-          <View style={styles.placeholderImage}>
-            <Text style={{ color: "#999" }}>Ajouter une photo</Text>
-          </View>
-        )}
-      </TouchableOpacity>
-      <View style={{paddingHorizontal:12}}>
-        <View>
-          <Text style={styles.label}>Type de véhicule</Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder=''
-          />
-        </View>
-        <View>
-          <Text style={styles.label}>Matricule</Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder=''
-          />
-        </View>
-        <View>
-          <Text style={styles.label}>Pays</Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder=''
-          />
-        </View>
-        <View>
-          <Text style={styles.label}>Ville</Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder=''
-          />
-        </View>
-        <View>
-          <Text style={styles.label}>Taille</Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder=''
-          />
-        </View>
-        <View>
-          <Text style={styles.label}>Tonnage</Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder=''
-          />
-        </View>
-        <View>
-          <Text style={styles.label}>Catégorie</Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder=''
-          />
-        </View>
-        <TouchableOpacity style={styles.buttonSave}>
-          <Text>Enregistrer</Text>
+      <KeyboardAwareScrollView
+        style={styles.container}
+        contentContainerStyle={{ paddingBottom: 40 }}
+        enableOnAndroid={true}
+        extraScrollHeight={Platform.OS === 'ios' ? 20 : 80}
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+      >
+        <Text style={styles.headerTitle}>Ajout d'un véhicule</Text>
+        <TouchableOpacity onPress={pickImage} style={styles.imagePicker}>
+          {image ? (
+            <Image source={{ uri: image }} style={styles.profileImage} />
+          ) : (
+            <View style={styles.placeholderImage}>
+              <Text style={{ color: "#999" }}>Ajouter une photo</Text>
+            </View>
+          )}
         </TouchableOpacity>
-      </View>
-    </ScrollView>
+        <View style={{ paddingHorizontal: 12 }}>
+          <View>
+            <Text style={styles.label}>Type de véhicule</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder=''
+            />
+          </View>
+          <View>
+            <Text style={styles.label}>Matricule</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder=''
+            />
+          </View>
+          <View>
+            <Text style={styles.label}>Pays</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder=''
+            />
+          </View>
+          <View>
+            <Text style={styles.label}>Ville</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder=''
+            />
+          </View>
+          <View>
+            <Text style={styles.label}>Taille</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder=''
+            />
+          </View>
+          <View>
+            <Text style={styles.label}>Tonnage</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder=''
+            />
+          </View>
+          <View>
+            <Text style={styles.label}>Catégorie</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder=''
+            />
+          </View>
+          <TouchableOpacity style={styles.buttonSave}>
+            <Text>Enregistrer</Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAwareScrollView >
   )
 }
 
@@ -96,26 +104,26 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontWeight: "bold",
     fontSize: 20,
-    textAlign:"center",
-    marginBottom:10
+    textAlign: "center",
+    marginBottom: 10
   },
   textInput: {
     padding: 10,
-    borderWidth:1,
-    borderColor:"green",
-    borderRadius:7
+    borderWidth: 1,
+    borderColor: "green",
+    borderRadius: 7
   },
-  label:{
-    marginBottom:3,
-    marginTop:7
+  label: {
+    marginBottom: 3,
+    marginTop: 7
   },
-  buttonSave:{
-    backgroundColor:"green",
-    height:40,
-    justifyContent:"center",
-    alignItems:"center",
-    borderRadius:4,
-    marginVertical:14
+  buttonSave: {
+    backgroundColor: "green",
+    height: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+    marginVertical: 14
   },
   imagePicker: {
     alignItems: 'center',
